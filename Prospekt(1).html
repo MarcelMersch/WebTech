@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body{
+  background-image: url('cool-background.png');
+  justify-content: space-between ;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode: lighten;
+  display: grid;
+  grid-template-columns: 25% 75%;
+  grid-gap: 20px
+}
+
+.dropdown {
+  position: relative;
+  justify-content: space-between;
+  display: inline-block;
+  padding: 15px;
+  margin-right: auto;
+  border-radius: 25px;
+  background:darkslategray;
+  width: 200px; /* Set a fixed width */
+  height: auto; /* Set a fixed height */
+  transition: width 0.3s, height 0.3s; /* Add transitions for smooth size change */
+  
+}
+
+
+.dropdown:hover {
+  width: auto; /* Set a larger width on hover */
+  height: auto;
+  
+}
+
+.dropdown-list {
+  display: none;
+}
+
+.dropdown:hover .dropdown-list {
+  display: block;
+  color:white;
+  font-size: 120%;
+  transition: width 0.6s, height 0.6; /* Add transitions for smooth size change */
+   /* Bring the sublist to the front on hover */
+  
+
+}
+
+.sublist {
+    display: none;
+    position: absolute;
+  top: 100%; /* Position the sublist below the dropdown */
+  left: 0;
+  border-radius: 15px;
+  background: darkslategray;
+   
+}
+
+.dropdown-list li:hover .sublist {
+    display: block;
+    position: relative;
+    height:auto;
+    width: auto;
+    
+}
+
+.sublist li {
+  list-style-type: none;
+  color:white;
+  font-size: 110%;
+}
+
+img {
+  width: 200px;
+  height: 300px;
+  object-fit: contain;
+  
+}
+
+figcaption{
+  color:white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 130%;
+  
+  text-align: left;
+}
+
+h1{
+  font-size: 300%;
+  color:white;
+  position: relative;
+  top: 0;
+  left:0;
+}
+
+h2{
+  font-size: 200%;
+  color:white;
+  
+}
+
+.container {
+  max-width: 1200px;
+  margin: 2%;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+#cart {
+      position:fixed;
+      margin: auto;
+      top: 0;
+      right: 0;
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 15px;
+      background-color: darkslategray;
+      margin-top: 30px;
+      width: 300px;
+      
+    }
+
+    .cart-item {
+      margin-bottom: 10px;
+      color:white;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      padding: 5px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+
+</style>
+</head>
+<body>
+
+<h1>Willkommen beim Superprospekt!</h1>
+
+<div class="dropdown">
+  <img src="Obst-und-Gemüse.jpg" alt="Obst und Gemüse" width="100" height="50">
+  <figcaption>Obst und Gemüse</figcaption>
+  <ul class="dropdown-list">
+        <li>Äpfel
+            <ul class="sublist">
+                <li onclick="addToCart('Äpfel', 'Marke 1', 20.00)">Marke 1</li>
+                <li onclick="addToCart('Äpfel', 'Marke 2', 18.00)">Marke 2</li>
+                <li onclick="addToCart('Äpfel', 'Marke 3', 22.00)">Marke 3</li>
+              </ul>
+        </li>
+        <li>
+            Bananen
+            <ul class="sublist">
+              <li onclick="addToCart('Bananen', 'Marke 1', 15.00)">Marke 1</li>
+              <li onclick="addToCart('Bananen', 'Marke 2', 14.00)">Marke 2</li>
+              <li onclick="addToCart('Bananen', 'Marke 3', 16.00)">Marke 3</li>
+            </ul>
+          </li>
+          <li>
+            Gurken
+            <ul class="sublist">
+              <li onclick="addToCart('Gurken', 'Marke 1', 10.00)">Marke 1</li>
+              <li onclick="addToCart('Gurken', 'Marke 2', 9.00)">Marke 2</li>
+              <li onclick="addToCart('Gurken', 'Marke 3', 11.00)">Marke 3</li>
+            </ul>
+          </li>
+          <li>
+            Tomaten
+            <ul class="sublist">
+              <li onclick="addToCart('Tomaten', 'Marke 1', 12.00)">Marke 1</li>
+              <li onclick="addToCart('Tomaten', 'Marke 2', 11.00)">Marke 2</li>
+              <li onclick="addToCart('Tomaten', 'Marke 3', 13.00)">Marke 3</li>
+            </ul>
+          </li>
+          <li>Äpfel
+            <ul class="sublist">
+                <li onclick="addToCart('Äpfel', 'Marke 1', 20.00)">Marke 1</li>
+                <li onclick="addToCart('Äpfel', 'Marke 2', 18.00)">Marke 2</li>
+                <li onclick="addToCart('Äpfel', 'Marke 3', 22.00)">Marke 3</li>
+              </ul>
+        </li>
+        <li>
+            Bananen
+            <ul class="sublist">
+              <li onclick="addToCart('Bananen', 'Marke 1', 15.00)">Marke 1</li>
+              <li onclick="addToCart('Bananen', 'Marke 2', 14.00)">Marke 2</li>
+              <li onclick="addToCart('Bananen', 'Marke 3', 16.00)">Marke 3</li>
+            </ul>
+          </li>
+          <li>
+            Gurken
+            <ul class="sublist">
+              <li onclick="addToCart('Gurken', 'Marke 1', 10.00)">Marke 1</li>
+              <li onclick="addToCart('Gurken', 'Marke 2', 9.00)">Marke 2</li>
+              <li onclick="addToCart('Gurken', 'Marke 3', 11.00)">Marke 3</li>
+            </ul>
+          </li>
+          <li>Äpfel
+            <ul class="sublist">
+                <li onclick="addToCart('Äpfel', 'Marke 1', 20.00)">Marke 1</li>
+                <li onclick="addToCart('Äpfel', 'Marke 2', 18.00)">Marke 2</li>
+                <li onclick="addToCart('Äpfel', 'Marke 3', 22.00)">Marke 3</li>
+              </ul>
+        </li>
+        <li>
+            Bananen
+            <ul class="sublist">
+              <li onclick="addToCart('Bananen', 'Marke 1', 15.00)">Marke 1</li>
+              <li onclick="addToCart('Bananen', 'Marke 2', 14.00)">Marke 2</li>
+              <li onclick="addToCart('Bananen', 'Marke 3', 16.00)">Marke 3</li>
+            </ul>
+          </li>
+          <li>
+            Gurken
+            <ul class="sublist">
+              <li onclick="addToCart('Gurken', 'Marke 1', 10.00)">Marke 1</li>
+              <li onclick="addToCart('Gurken', 'Marke 2', 9.00)">Marke 2</li>
+              <li onclick="addToCart('Gurken', 'Marke 3', 11.00)">Marke 3</li>
+            </ul>
+          </li>
+          
+    </ul>
+</div>
+<div class="dropdown">
+  <img src="Fleischs-und-Fisch.jpg" alt="Fleisch und Fisch" width="100" height="50">
+  <figcaption>Fleisch und Fisch</figcaption>
+  <ul class="dropdown-list">
+        <li>Äpfel
+            <ul class="sublist">
+                <li>Marke 1</li>
+                <li>Marke 2</li>
+                <li>Marke 3</li>
+              </ul>
+        </li>
+        <li>Bananen
+              <ul class="sublist">
+                <li>Marke 1</li>
+                <li>Marke 2</li>
+                <li>Marke 3</li>
+              </ul>
+        </li>
+        <li>Gurken
+              <ul class="sublist">
+                <li>Marke 1</li>
+                <li>Marke 2</li>
+                <li>Marke 3</li>
+              </ul>
+        </li>
+        <li>Tomaten
+              <ul class="sublist">
+                <li>Marke 1</li>
+                <li>Marke 2</li>
+                <li>Marke 3</li>
+              </ul>
+        </li>
+    </ul>
+</div>
+<div class="dropdown">
+  <img src="Käse-Milch-Eier.jpg" alt="Käse,Eier und Molkerei" width="100" height="50">
+  <figcaption>Käse, Eier und Molkerei</figcaption>
+  <ul class="dropdown-list">
+        <li>Äpfel
+            <ul class="sublist">
+                <li>Marke 1</li>
+                <li>Marke 2</li>
+                <li>Marke 3</li>
+              </ul>
+        </li>
+        <li>Bananen
+              <ul class="sublist">
+                <li>Marke 1</li>
+                <li>Marke 2</li>
+                <li>Marke 3</li>
+              </ul>
+        </li>
+        <li>Gurken
+              <ul class="sublist">
+                <li>Marke 1</li>
+                <li>Marke 2</li>
+                <li>Marke 3</li>
+              </ul>
+        </li>
+        <li>Tomaten
+              <ul class="sublist">
+                <li>Marke 1</li>
+                <li>Marke 2</li>
+                <li>Marke 3</li>
+              </ul>
+        </li>
+    </ul>
+</div>
+<div class="dropdown">
+  <img src="Tiefkühlkost.jpg" alt="Tiefkühlkost" width="100" height="50">
+  <figcaption>Tiefkühlkost</figcaption>
+  <ul class="dropdown-list">
+        <li>Äpfel
+            <ul class="sublist">
+                <li>Marke 1</li>
+                <li>Marke 2</li>
+                <li>Marke 3</li>
+              </ul>
+        </li>
+        <li>Bananen
+              <ul class="sublist">
+                <li>Marke 1</li>
+                <li>Marke 2</li>
+                <li>Marke 3</li>
+              </ul>
+        </li>
+        <li>Gurken
+              <ul class="sublist">
+                <li>Marke 1</li>
+                <li>Marke 2</li>
+                <li>Marke 3</li>
+              </ul>
+        </li>
+        <li>Tomaten
+              <ul class="sublist">
+                <li>Marke 1</li>
+                <li>Marke 2</li>
+                <li>Marke 3</li>
+              </ul>
+        </li>
+    </ul>
+</div>
+<div class="dropdown">
+  <img src="Brot-Cerealien-Aufstrich.jpg" alt="Brot, Cerealien und Aufstrich" width="100" height="50">
+  <figcaption>Brot, Cerealien und Aufstrich</figcaption>
+  <ul class="dropdown-list">
+        <li>Äpfel
+            <ul class="sublist">
+                <li>Marke 1</li>
+                <li>Marke 2</li>
+                <li>Marke 3</li>
+              </ul>
+        </li>
+        <li>Bananen
+              <ul class="sublist">
+                <li>Marke 1</li>
+                <li>Marke 2</li>
+                <li>Marke 3</li>
+              </ul>
+        </li>
+        <li>Gurken
+              <ul class="sublist">
+                <li>Marke 1</li>
+                <li>Marke 2</li>
+                <li>Marke 3</li>
+              </ul>
+        </li>
+        <li>Tomaten
+              <ul class="sublist">
+                <li>Marke 1</li>
+                <li>Marke 2</li>
+                <li>Marke 3</li>
+              </ul>
+        </li>
+    </ul>
+</div>
+<div class="dropdown">
+  <img src="Kochen-Backen.jpg" alt="Backen und Kochen" width="100" height="50">
+  <figcaption>Backen und Kochen</figcaption>
+  <ul class="dropdown-list">
+        <li>Äpfel
+            <ul class="sublist">
+                <li>Marke 1</li>
+                <li>Marke 2</li>
+                <li>Marke 3</li>
+              </ul>
+        </li>
+        <li>Bananen
+              <ul class="sublist">
+                <li>Marke 1</li>
+                <li>Marke 2</li>
+                <li>Marke 3</li>
+              </ul>
+        </li>
+        <li>Gurken
+              <ul class="sublist">
+                <li>Marke 1</li>
+                <li>Marke 2</li>
+                <li>Marke 3</li>
+              </ul>
+        </li>
+        <li>Tomaten
+              <ul class="sublist">
+                <li>Marke 1</li>
+                <li>Marke 2</li>
+                <li>Marke 3</li>
+              </ul>
+        </li>
+    </ul>
+</div>
+<div class="dropdown">
+  <img src="Öle-soßen.jpg" alt="Öl, Soßen und Gewürze" width="100" height="50">
+  <figcaption>Öl, Soßen und Gewürze</figcaption>
+  <ul class="dropdown-list">
+        <li>Äpfel
+            <ul class="sublist">
+                <li>Marke 1</li>
+                <li>Marke 2</li>
+                <li>Marke 3</li>
+              </ul>
+        </li>
+        <li>Bananen
+              <ul class="sublist">
+                <li>Marke 1</li>
+                <li>Marke 2</li>
+                <li>Marke 3</li>
+              </ul>
+        </li>
+        <li>Gurken
+              <ul class="sublist">
+                <li>Marke 1</li>
+                <li>Marke 2</li>
+                <li>Marke 3</li>
+              </ul>
+        </li>
+        <li>Tomaten
+              <ul class="sublist">
+                <li>Marke 1</li>
+                <li>Marke 2</li>
+                <li>Marke 3</li>
+              </ul>
+        </li>
+    </ul>
+</div>
+<div class="dropdown">
+  <img src="Konserven.jpg" alt="Konserven und Fertiggerichte" width="100" height="50">
+  <figcaption>Konserven und Fertiggerichte</figcaption>
+  <ul class="dropdown-list">
+        <li>Äpfel
+            <ul class="sublist">
+                <li>Marke 1</li>
+                <li>Marke 2</li>
+                <li>Marke 3</li>
+              </ul>
+        </li>
+        <li>Bananen
+              <ul class="sublist">
+                <li>Marke 1</li>
+                <li>Marke 2</li>
+                <li>Marke 3</li>
+              </ul>
+        </li>
+        <li>Gurken
+              <ul class="sublist">
+                <li>Marke 1</li>
+                <li>Marke 2</li>
+                <li>Marke 3</li>
+              </ul>
+        </li>
+        <li>Tomaten
+              <ul class="sublist">
+                <li>Marke 1</li>
+                <li>Marke 2</li>
+                <li>Marke 3</li>
+              </ul>
+        </li>
+    </ul>
+</div>
+<div class="dropdown">
+  <img src="süßes-salziges.jpg" alt="Süßes und Salziges" width="100" height="50">
+  <figcaption>Süßes und Salziges</figcaption>
+  <ul class="dropdown-list">
+        <li>Äpfel
+            <ul class="sublist">
+                <li>Marke 1</li>
+                <li>Marke 2</li>
+                <li>Marke 3</li>
+              </ul>
+        </li>
+        <li>Bananen
+              <ul class="sublist">
+                <li>Marke 1</li>
+                <li>Marke 2</li>
+                <li>Marke 3</li>
+              </ul>
+        </li>
+        <li>Gurken
+              <ul class="sublist">
+                <li>Marke 1</li>
+                <li>Marke 2</li>
+                <li>Marke 3</li>
+              </ul>
+        </li>
+        <li>Tomaten
+              <ul class="sublist">
+                <li>Marke 1</li>
+                <li>Marke 2</li>
+                <li>Marke 3</li>
+              </ul>
+        </li>
+    </ul>
+</div>
+<div class="dropdown">
+  <img src="Kaffee-Tea.jpg" alt="Kaffee und Tee" width="100" height="50">
+  <figcaption>Kaffee und Tee</figcaption>
+  <ul class="dropdown-list">
+        <li>Äpfel
+            <ul class="sublist">
+                <li>Marke 1</li>
+                <li>Marke 2</li>
+                <li>Marke 3</li>
+              </ul>
+        </li>
+        <li>Bananen
+              <ul class="sublist">
+                <li>Marke 1</li>
+                <li>Marke 2</li>
+                <li>Marke 3</li>
+              </ul>
+        </li>
+        <li>Gurken
+              <ul class="sublist">
+                <li>Marke 1</li>
+                <li>Marke 2</li>
+                <li>Marke 3</li>
+              </ul>
+        </li>
+        <li>Tomaten
+              <ul class="sublist">
+                <li>Marke 1</li>
+                <li>Marke 2</li>
+                <li>Marke 3</li>
+              </ul>
+        </li>
+    </ul>
+</div>
+<div class="dropdown">
+  <img src="getränke.jpg" alt="Getränke" width="100" height="50">
+  <figcaption>Getränke</figcaption>
+  <ul class="dropdown-list">
+        <li>Äpfel
+            <ul class="sublist">
+                <li>Marke 1</li>
+                <li>Marke 2</li>
+                <li>Marke 3</li>
+              </ul>
+        </li>
+        <li>Bananen
+              <ul class="sublist">
+                <li>Marke 1</li>
+                <li>Marke 2</li>
+                <li>Marke 3</li>
+              </ul>
+        </li>
+        <li>Gurken
+              <ul class="sublist">
+                <li>Marke 1</li>
+                <li>Marke 2</li>
+                <li>Marke 3</li>
+              </ul>
+        </li>
+        <li>Tomaten
+              <ul class="sublist">
+                <li>Marke 1</li>
+                <li>Marke 2</li>
+                <li>Marke 3</li>
+              </ul>
+        </li>
+    </ul>
+</div>
+
+<div class="container">
+<div id="cart">
+    <h2>Warenkorb</h2>
+    <ul id="cart-items"></ul>
+    <p style="font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;">Total: <span id="total">0.00</span>€</p>
+  </div>
+</div>
+
+
+<script>
+   var cartItems = [];
+var total = 0;
+
+function addToCart(product, brand, price) {
+  cartItems.push({ product: product, brand: brand, price: price });
+  total += price;
+
+  // Update the cart display
+  updateCartDisplay();
+}
+
+function removeFromCart(index) {
+  if (index >= 0 && index < cartItems.length) {
+    total -= cartItems[index].price;
+    cartItems.splice(index, 1);
+
+    // Update the cart display
+    updateCartDisplay();
+  }
+}
+
+function updateCartDisplay() {
+  var cartItemsElement = document.getElementById('cart-items');
+  var totalElement = document.getElementById('total');
+
+  // Clear previous items
+  cartItemsElement.innerHTML = '';
+
+  // Populate the cart items
+  cartItems.forEach(function (item, index) {
+    var li = document.createElement('li');
+    li.className = 'cart-item';
+    li.textContent = `${item.product} - ${item.brand} - ${item.price.toFixed(2)}€`;
+
+    // Add a remove button to each cart item
+    var removeButton = document.createElement('button');
+    removeButton.textContent = 'Entfernen';
+    removeButton.onclick = function () {
+      removeFromCart(index);
+    };
+
+    li.appendChild(removeButton);
+    cartItemsElement.appendChild(li);
+  });
+
+  // Update total
+  totalElement.textContent = total.toFixed(2);
+}
+
+  </script>
+</body>
+</html>
+
